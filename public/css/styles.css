@@ -1,0 +1,9 @@
+/**
+ * Import other CSS
+ */
+
+@import url("reset.css");
+
+h1 {
+  color: red;
+}
