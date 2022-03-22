@@ -12,8 +12,29 @@
   "author": "Brent Van Steertegem",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.0.0",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.2",
+    "cookie-parser": "^1.4.6",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "express": "^4.17.3",
+    "express-handlebars": "^6.0.3",
+    "express-validator": "^6.14.0",
+    "handlebars": "^4.7.7",
+    "jest": "^27.5.1",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.4",
+    "prettier": "^2.6.0",
+    "sharp": "^0.30.3",
+    "swagger-ui-express": "^4.3.0",
+    "typeorm": "^0.3.1",
+    "uuid": "^8.3.2",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.11.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
     "nodemon": "^2.0.15"
   }
 }
