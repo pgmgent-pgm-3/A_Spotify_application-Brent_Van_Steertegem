@@ -18,8 +18,9 @@ export default new EntitySchema({
   relations: {
     user_id: {
       target: 'User',
-      type: 'many-to-many',
+      type: 'many-to-one',
       joinColumn: true,
+      ondelete: 'CASCADE',
     },
     songs: {
       target: 'Song',
