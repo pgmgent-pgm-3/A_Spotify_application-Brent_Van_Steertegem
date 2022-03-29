@@ -4,3 +4,122 @@
 
 @import url("reset.css");
 
+body {
+  color: white;
+  background-color: black;
+  font-family: monospace, 'Courier New', Courier;
+  font-size: 1.1rem;
+}
+
+main {
+  display: flex;
+  height: calc(calc(100vh - 5rem) - 4px);
+}
+
+/* sidebar */
+.sidebar {
+  width: 20rem;
+  padding: 1rem;
+  border-right: 2px solid #333333;
+}
+
+.sidebar__title {
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.playlist {
+  height: 4rem;
+  background-color: #111111;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 0.75rem solid #111111;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.playlist__img {
+  width: 4rem;
+  height: 4rem;
+}
+
+.content {
+  width: calc(100vw - 24rem);
+  padding: 1rem;
+}
+
+footer {
+  height: 3rem;
+  padding: 1rem;
+  border-top: 2px solid #333333;
+}
+
+/* detail*/
+.detail {
+padding-bottom: 1rem;
+}
+
+.detail__top {
+  display: flex;
+  align-items: center;
+}
+
+.detail__image {
+  width: 10rem;
+  height: 10rem;
+}
+
+.detail__title {
+  font-size: 2rem;
+}
+
+.detail__owner {
+  font-size: 1rem;
+  padding-bottom: 1rem;
+  display: block;
+}
+
+.detail__description {
+  font-size: 1rem;
+}
+
+/* main content */
+.main_content {
+  margin-left: -1rem;
+  width: calc(100% + 2rem);
+  background-color: #111111;
+}
+
+/* songs */
+.songs { 
+  padding: 2rem 1rem 2rem 2rem;
+  counter-reset: song;
+}
+
+.song {
+  display: flex;
+  align-items: center;
+  counter-increment: song;
+}
+
+.song:before {
+  content: counter(song);
+  margin-right: 1rem;
+}
+
+.song__image {
+  height: 3rem;
+  width: 3rem;
+}
+
+.song__title {
+
+}
+
+.song__artist {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+}
