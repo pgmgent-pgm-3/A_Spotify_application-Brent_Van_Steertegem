@@ -1,0 +1,173 @@
+/**
+ * Import other CSS
+ */
+
+ @import url("reset.css");
+
+ html {
+   font-size: 100%;
+ }
+ 
+ body {
+   /* background: white; */
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: 400;
+   line-height: 1.75;
+   /* color: #000000; */
+ }
+ 
+ body#authentication {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100vw;
+   height: 100vh;
+ }
+ 
+ p {
+   margin-bottom: 1rem;
+ }
+ 
+ h1, h2, h3, h4, h5 {
+   margin: 3rem 0 1.38rem;
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: 400;
+   line-height: 1.3;
+ }
+ 
+ h1 {
+   margin-top: 0;
+   font-size: 3.052rem;
+ }
+ 
+ h2 {font-size: 2.441rem;}
+ 
+ h3 {font-size: 1.953rem;}
+ 
+ h4 {font-size: 1.563rem;}
+ 
+ h5 {font-size: 1.25rem;}
+ 
+ small, .text-small { font-size: 0.8rem; }
+ 
+ #content {
+   padding: 30px;
+ }
+ 
+ /**
+  * Links
+  */
+ 
+ a {
+   color: var(--color-text);
+   transition: .3s;
+ }
+ 
+ a:hover {
+   color: var(--color-item-background);
+   border: none;
+ }
+ 
+ /**
+  * Navigation
+  */
+ 
+ nav {
+   display: flex;
+   justify-content: space-between;
+   padding: 30px;
+   border-bottom: 1px solid black;
+ }
+ 
+ nav .logo {
+   font-size: 1.2rem;
+ }
+ 
+ nav ul {
+   display: flex;
+ }
+ 
+ nav ul li+li {
+   margin-left: 20px;
+ }
+ 
+ 
+ /**
+  * Buttons
+  */
+ 
+ .btn {
+   padding: 7px;
+   border: none;
+   background: none;
+   cursor: pointer;
+ }
+ 
+ .btn-primary {
+   border: 1px solid black;
+   background-color: #EEEEEE;
+ }
+ 
+ .btn-secondary {
+   border: 1px solid black;
+ }
+ 
+ /**
+  * Authentication Container
+  */
+ 
+ .auth-container {
+   box-sizing: border-box;
+   width: 400px;
+   padding: 30px;
+   /* border: 1px solid black; */
+ }
+ 
+ .auth-container h4 {
+   margin: 0 0 20px 0;
+ }
+ 
+ .auth-container form {
+   width: 100%;
+   display: block;
+ }
+ 
+ .auth-container form .input-container + .input-container {
+   margin-top: 10px;
+ }
+ 
+ .auth-container form .input-container label {
+   display: block;
+ }
+ 
+ .auth-container form .input-container .error {
+   color: red;
+   font-size: 0.8rem;
+ }
+ 
+ .auth-container form .input-container input {
+   box-sizing: border-box;
+   display: block;
+   width: 100%;
+   padding: 7px;
+ }
+ 
+ .auth-container .footer-container {
+   display: flex;
+   margin-top: 40px;
+   justify-content: space-between;
+   align-items: baseline;
+ }
+ 
+ .auth-container .footer-container .btn + .btn {
+   margin-left: 10px;
+ }
+ 
+ ul.form-errors {
+   padding: 7px 0 7px 10px;
+   background-color: lightcoral;
+   color: white;
+   margin-bottom: 20px;
+   list-style-type: disc;
+   list-style-position: inside;
+ }

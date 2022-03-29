@@ -1,5 +1,5 @@
 /**
- * A constans file
+ * A constants file
  */
 
 import * as path from 'path';

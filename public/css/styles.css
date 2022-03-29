@@ -50,6 +50,19 @@ main {
   padding: 1rem;
 }
 
+.logout {
+  text-align: right;
+}
+
+.logout button{
+  color: inherit;
+  background-color: inherit;
+  padding: 0;
+  padding-bottom: 2px;
+  border: 0;
+  border-bottom: 1px solid;
+}
+
 footer {
   height: 3rem;
   padding: 1rem;
@@ -112,10 +125,6 @@ padding-bottom: 1rem;
 .song__image {
   height: 3rem;
   width: 3rem;
-}
-
-.song__title {
-
 }
 
 .song__artist {

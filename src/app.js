@@ -3,13 +3,36 @@ import 'dotenv/config';
 import * as path from 'path';
 import { createConnection } from 'typeorm';
 import { create } from 'express-handlebars';
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import entities from './models/index.js';
+import {
+  login,
+  logout,
+  postLogin,
+  postRegister,
+  register,
+} from './controllers/authentication.js';
+import validationAuthentication from './middleware/validation/authentication.js';
 import HandlebarsHelpers from './lib/HandlebarsHelpers.js';
 import { home } from './controllers/home.js';
 import { SOURCE_PATH } from './consts.js';
+import { jwtAuth } from './middleware/jwtAuth.js';
 
 const app = express();
 app.use(express.static('public'));
+
+/**
+ * Body Parser import
+ */
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+/**
+ * Import the cookie parser
+ */
+
+app.use(cookieParser());
 
 /**
  * Handlebars init
@@ -25,7 +48,12 @@ app.set('views', path.join(SOURCE_PATH, 'views'));
 /**
  * App Routing
  */
-app.get('/', home);
+app.get('/', jwtAuth, home);
+app.get('/login', login);
+app.get('/register', register);
+app.post('/register', ...validationAuthentication, postRegister, register);
+app.post('/login', ...validationAuthentication, postLogin, login);
+app.post('/logout', logout);
 
 /**
  * Create database connection and start listening
