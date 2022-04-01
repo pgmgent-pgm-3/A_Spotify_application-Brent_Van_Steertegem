@@ -5,6 +5,7 @@ import { createConnection } from 'typeorm';
 import { create } from 'express-handlebars';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+import swaggerUiExpress from 'swagger-ui-express';
 import entities from './models/index.js';
 import {
   login,
@@ -18,9 +19,20 @@ import HandlebarsHelpers from './lib/HandlebarsHelpers.js';
 import { home } from './controllers/home.js';
 import { SOURCE_PATH } from './consts.js';
 import { jwtAuth } from './middleware/jwtAuth.js';
+import swaggerDefinition from './docs/swagger.js';
 
 const app = express();
 app.use(express.static('public'));
+
+/**
+ * Adding Swagger documentation
+ */
+
+app.use(
+  '/api-docs',
+  swaggerUiExpress.serve,
+  swaggerUiExpress.setup(swaggerDefinition)
+);
 
 /**
  * Body Parser import
