@@ -3,6 +3,12 @@
  */
 
 export default {
+  AuthenticationInput: {
+    properties: {
+      email: { type: 'string' },
+      password: { type: 'string' },
+    },
+  },
   User: {
     properties: {
       id: { type: 'number' },
@@ -23,9 +29,6 @@ export default {
       user_meta: {
         $ref: '#/components/schemas/UserMeta',
       },
-      role: {
-        $ref: '#/components/schemas/Role',
-      },
     },
     example: {
       email: 'Ada.lovelace@mail.com',
@@ -35,9 +38,6 @@ export default {
         lastname: 'Lovelace',
         username: 'AdaLace',
         avatar: 'avatar.jpg',
-      },
-      role: {
-        name: 'admin',
       },
     },
   },

@@ -24,14 +24,19 @@ export default {
   ],
   tags: [
     {
+      name: 'Authentication',
+      description: 'All the endpoints used for authentication.',
+    },
+    {
       name: 'Users',
       description:
         'All the create, read, update and delete actions for the users.',
     },
-    {
-      name: 'Roles',
-      description: 'All the read actions for the roles.',
-    },
+    // {
+    //   name: 'Artists',
+    //   description:
+    //     'All the create, read, update and delete actions for the roles.',
+    // },
   ],
   paths,
   components: {
