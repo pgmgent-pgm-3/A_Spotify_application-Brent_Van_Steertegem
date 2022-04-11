@@ -23,13 +23,26 @@ main {
   border-right: 2px solid #333333;
 }
 
-.sidebar__title {
+.sidebar__item {
+  height: calc((100% - 1rem)/ 2);
+}
+
+.sidebar__item:not(:first-of-type) {
+  margin-top: 1rem;
+}
+
+.item__title {
   margin-left: 1rem;
   margin-bottom: 1rem;
   font-size: 2rem;
 }
 
-.playlist {
+.item__list {
+  height: calc(100% - 3rem);
+  overflow-y: scroll;
+}
+
+.list__item {
   height: 4rem;
   background-color: #111111;
   display: flex;
@@ -40,7 +53,7 @@ main {
   margin-bottom: 1rem;
 }
 
-.playlist__img {
+.list__img {
   width: 4rem;
   height: 4rem;
 }
