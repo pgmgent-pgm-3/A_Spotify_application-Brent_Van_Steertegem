@@ -73,11 +73,9 @@ export const postRegister = async (req, res, next) => {
       });
 
       // create a webtoken
-      const token = jwt.sign(
-        { newUser, activeCategory: null },
-        process.env.TOKEN_SALT,
-        { expiresIn: '1h' }
-      );
+      const token = jwt.sign({ newUser }, process.env.TOKEN_SALT, {
+        expiresIn: '1h',
+      });
 
       // add the cookie in response
       res.cookie('token', token, { httpOnly: true });
@@ -156,11 +154,9 @@ export const postLogin = async (req, res, next) => {
       }
 
       // create a webtoken
-      const token = jwt.sign(
-        { user, activeCategory: null },
-        process.env.TOKEN_SALT,
-        { expiresIn: '1h' }
-      );
+      const token = jwt.sign({ user }, process.env.TOKEN_SALT, {
+        expiresIn: '1h',
+      });
 
       // add the cookie in response
       res.cookie('token', token, { httpOnly: true });

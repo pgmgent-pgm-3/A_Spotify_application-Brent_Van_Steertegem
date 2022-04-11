@@ -70,6 +70,7 @@ app.get('/', jwtAuth, home);
 app.get('/login', login);
 app.get('/register', register);
 app.post('/logout', logout);
+app.post('/', jwtAuth, home);
 
 /**
  * API routing

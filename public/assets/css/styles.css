@@ -16,6 +16,15 @@ main {
   height: calc(calc(100vh - 5rem) - 4px);
 }
 
+/* modal */
+.modal {
+  padding: 1rem;
+  width: calc(100vw - 2rem);
+  height: calc(100vh - 2rem);
+  position: absolute;
+  background-color: black;
+}
+
 /* sidebar */
 .sidebar {
   width: 20rem;
@@ -63,17 +72,44 @@ main {
   padding: 1rem;
 }
 
-.logout {
-  text-align: right;
+.content__top {
+  justify-content: flex-end;
+  display: flex;
+  gap: 2rem;
 }
 
-.logout button{
+.content__span {
+  font-size: 0.95rem;
+}
+
+.content__btn{
   color: inherit;
   background-color: inherit;
   padding: 0;
   padding-bottom: 2px;
   border: 0;
   border-bottom: 1px solid;
+}
+
+.content__btn--close {
+  height: 2rem;
+  width: 2rem;
+  border: 0;
+}
+
+.content__icon {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  transition: ease-in-out 0.3s;
+}
+
+.content__icon:hover {
+  transform: rotate(90deg);
+  color: red;
+}
+
+.content__btn:hover {
+  cursor: pointer;
 }
 
 footer {

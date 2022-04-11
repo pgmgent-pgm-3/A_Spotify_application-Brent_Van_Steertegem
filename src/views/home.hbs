@@ -1,63 +1,47 @@
 <main>
+    {{#if manage}}
+        <div class="modal">
+            <form class="content__top" method="post" action="/">
+                <button class="content__btn content__btn--close" type="submit">
+                    <i class="content__icon fa-solid fa-xmark"></i> 
+                </button>
+            </form>
+        </div>
+    {{/if}}      
     <div class="sidebar">
         <div class="sidebar__item">
             <h1 class="item__title">Playlists</h1>
             <ul class="item__list">
-                <li class="list__item">
-                    <img src="./assets/images/dream_widow.jpg" alt="img" class="list__img">
-                    <span class="list__title">Heavy</span>
-                </li>
-                <li class="list__item">
-                    <img src="./assets/images/dream_widow.jpg" alt="img" class="list__img">
-                    <span class="list__title">Rock 'n roll</span>
-                </li>
-                <li class="list__item">
-                    <img src="./assets/images/dream_widow.jpg" alt="img" class="list__img">
-                    <span class="list__title">Fun</span>
-                </li>
-                <li class="list__item">
-                    <img src="./assets/images/dream_widow.jpg" alt="img" class="list__img">
-                    <span class="list__title">Way too funny</span>
-                </li>
-                <li class="list__item">
-                    <img src="./assets/images/dream_widow.jpg" alt="img" class="list__img">
-                    <span class="list__title">Hard Rock</span>
-                </li>
+                {{#each playlists}}
+                    {{>card}}
+                {{/each}}
             </ul>
         </div>
         <div class="sidebar__item">
             <h1 class="item__title">Artists</h1>
             <ul class="item__list">
-                <li class="list__item">
-                    <img src="./assets/images/dream_widow.jpg" alt="img" class="list__img">
-                    <span class="list__title">Dream Widow</span>
-                </li>
-                <li class="list__item">
-                    <img src="./assets/images/dream_widow.jpg" alt="img" class="list__img">
-                    <span class="list__title">Slipknot</span>
-                </li>
-                <li class="list__item">
-                    <img src="./assets/images/dream_widow.jpg" alt="img" class="list__img">
-                    <span class="list__title">Rammstein</span>
-                </li>
-                <li class="list__item">
-                    <img src="./assets/images/dream_widow.jpg" alt="img" class="list__img">
-                    <span class="list__title">Another Day's Armor</span>
-                </li>
-                <li class="list__item">
-                    <img src="./assets/images/dream_widow.jpg" alt="img" class="list__img">
-                    <span class="list__title">Sick Puppies</span>
-                </li>
+                {{#each artists}}
+                    {{>card}}
+                {{/each}}
             </ul>
         </div>
     </div>
     <div class="content">
-        <form class="logout" method="post" action="/logout">
-            <button type="submit">Logout</button>
+        <form class="content__top" method="post" action="/logout">
+            {{#isEditor role}}
+            <section>
+                <span class="content__span">Edit:</span>
+                <button class="content__btn" type="submit" formaction="/?manage=users">Users</button>
+                <button class="content__btn" type="submit" formaction="/?manage=artists">Artists</button>
+                <button class="content__btn" type="submit" formaction="/?manage=songs">Songs</button>
+                <button class="content__btn" type="submit" formaction="/?manage=playlists">Playlists</button>
+            </section>
+            {{/isEditor}}
+            <button class="content__btn" type="submit">Logout</button>
         </form>
         <div class="detail">
             <div class="detail__top">
-                <img class="detail__image" alt="playlist image" src="./assets/images/dream_widow.jpg">
+                <img class="detail__image" alt="playlist image" src="/assets/images/dream_widow.jpg">
                 <div>
                     <h1 class="detail__title">Heavy</h1>
                     <span class="detail__owner">Taylor Hawkins</span>
@@ -68,7 +52,7 @@
         <div class="main_content">
             <ol class="songs">
                 <li class="song">
-                    <img class="song__image" src="./assets/images/dream_widow.jpg">
+                    <img class="song__image" src="/assets/images/dream_widow.jpg">
                     <div>
                         <h1 class="song__title">Encino</h1>
                         <span class="song__artist">Dream Widow</span>
