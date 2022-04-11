@@ -52,12 +52,11 @@ export const postRegister = async (req, res, next) => {
       // get the user repository
       const userRepository = getConnection().getRepository('User');
 
-      // validate if the user exists
+      // validate if the user already exists
       const user = await userRepository.findOne({
         where: { email: req.body.email },
       });
 
-      // check if we found a user
       if (user) {
         req.formErrors = [{ message: 'Gebruiker bestaat reeds.' }];
         return next();
@@ -66,10 +65,27 @@ export const postRegister = async (req, res, next) => {
       // hash the password
       const hashedPassword = bcrypt.hashSync(req.body.password, 12);
 
+      // get all roles from the roles repository
+      // get the role repository
+      const roleRepository = getConnection().getRepository('Role');
+
+      // validate if the role exists
+      const role = await roleRepository.findOne({
+        where: { label: 'admin' },
+      });
+
+      console.log(role);
+
+      // send an error if the role doesn't exists
+      if (!role) {
+        return next();
+      }
+
       // create a new user
       const newUser = await userRepository.save({
         email: req.body.email,
         password: hashedPassword,
+        role_id: role.id,
       });
 
       // create a webtoken
