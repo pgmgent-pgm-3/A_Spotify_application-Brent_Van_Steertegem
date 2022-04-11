@@ -50,14 +50,6 @@ export default {
       avatar: { type: 'string' },
     },
   },
-  UserMetaInput: {
-    properties: {
-      firstname: { type: 'string' },
-      lastname: { type: 'string' },
-      username: { type: 'string' },
-      avatar: { type: 'string' },
-    },
-  },
   Role: {
     properties: {
       id: { type: 'number' },

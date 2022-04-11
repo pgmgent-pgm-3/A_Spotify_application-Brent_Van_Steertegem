@@ -5,6 +5,7 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
+    "seed": "node ./src/database/seeders/seed.js",
     "start:dev": "nodemon ./src/app.js --config nodemon.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
