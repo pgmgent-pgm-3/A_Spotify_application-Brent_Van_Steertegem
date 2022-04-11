@@ -1,7 +1,7 @@
 <section class="auth-container register">
   <h4>Register</h4>
   {{>form-errors this}}
-  <form method="post" action="register">
+  <form method="post" action="/api/register">
     {{#each inputs}}
       {{>authentication-form-input this}}
     {{/each}}

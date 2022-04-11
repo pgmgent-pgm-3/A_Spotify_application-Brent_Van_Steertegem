@@ -1,7 +1,7 @@
 <section class="auth-container login">
   <h4>Login</h4>
   {{>form-errors this}}
-  <form method="post" action="login">
+  <form method="post" action="/api/login">
     {{#each inputs}}
       {{>authentication-form-input this}}
     {{/each}}

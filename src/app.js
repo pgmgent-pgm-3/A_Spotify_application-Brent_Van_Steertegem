@@ -20,6 +20,12 @@ import { home } from './controllers/home.js';
 import { SOURCE_PATH } from './consts.js';
 import { jwtAuth } from './middleware/jwtAuth.js';
 import swaggerDefinition from './docs/swagger.js';
+import { deleteUser, getUser, getUsers } from './controllers/api/user.js';
+import {
+  deleteArtist,
+  postArtist,
+  putArtist,
+} from './controllers/api/artist.js';
 
 const app = express();
 app.use(express.static('public'));
@@ -63,9 +69,20 @@ app.set('views', path.join(SOURCE_PATH, 'views'));
 app.get('/', jwtAuth, home);
 app.get('/login', login);
 app.get('/register', register);
-app.post('/register', ...validationAuthentication, postRegister, register);
-app.post('/login', ...validationAuthentication, postLogin, login);
 app.post('/logout', logout);
+
+/**
+ * API routing
+ */
+app.post('/api/login', ...validationAuthentication, postLogin, login);
+app.post('/api/register', ...validationAuthentication, postRegister, register);
+app.get('/api/users', jwtAuth, getUsers, home);
+app.get('/api/user/:id', jwtAuth, getUser, home);
+app.delete('/api/user/:id', jwtAuth, deleteUser, home);
+// post artist needs validation
+app.post('/api/artist', jwtAuth, postArtist, home);
+app.put('/api/artist', jwtAuth, putArtist, home);
+app.delete('/api/artist', jwtAuth, deleteArtist, home);
 
 /**
  * Create database connection and start listening
