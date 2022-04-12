@@ -2,10 +2,16 @@
  * A Home Controller
  */
 
+import { getUsers } from './api/user.js';
+
 export const home = async (req, res) => {
   if (req.role === 'admin' || req.role === 'editor' || req.role === 'reader') {
     const { role } = req;
     const { manage } = req.query;
+    let data;
+    if (manage === 'users') {
+      data = await getUsers();
+    }
     const playlists = [
       'Heavy',
       "Rock 'n roll",
@@ -20,7 +26,7 @@ export const home = async (req, res) => {
       "Another Day's Armor",
       'Sick Puppies',
     ];
-    return res.render('home', { role, manage, playlists, artists });
+    return res.render('home', { role, data, playlists, artists });
   }
   // Gebruiker heeft geen geldige rol
   return null;

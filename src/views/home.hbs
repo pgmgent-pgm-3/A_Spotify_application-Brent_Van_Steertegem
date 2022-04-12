@@ -1,11 +1,15 @@
 <main>
-    {{#if manage}}
+    {{#if data}}
         <div class="modal">
             <form class="content__top" method="post" action="/">
                 <button class="content__btn content__btn--close" type="submit">
                     <i class="content__icon fa-solid fa-xmark"></i> 
                 </button>
             </form>
+
+            {{#each data}}
+                <p>{{this.id}} - {{this.email}}</p>
+            {{/each}}
         </div>
     {{/if}}      
     <div class="sidebar">

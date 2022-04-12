@@ -27,11 +27,12 @@ export const getUsers = async (req, res, next) => {
     const userRepository = getConnection().getRepository('User');
 
     // get all users and return them with status code 200
-    return res.status(200).json(
-      await userRepository.find({
-        relations: ['user_meta', 'roles'],
-      })
-    );
+    return await userRepository.find();
+    // return res.status(200).json(
+    //   await userRepository.find({
+    //     relations: ['user_meta', 'roles'],
+    //   })
+    // );
   } catch (e) {
     next(e.message);
   }

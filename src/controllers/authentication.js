@@ -74,8 +74,6 @@ export const postRegister = async (req, res, next) => {
         where: { label: 'admin' },
       });
 
-      console.log(role);
-
       // send an error if the role doesn't exists
       if (!role) {
         return next();
