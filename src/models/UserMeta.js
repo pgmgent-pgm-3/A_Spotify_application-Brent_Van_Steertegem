@@ -25,7 +25,7 @@ export default new EntitySchema({
     },
   },
   relations: {
-    user: {
+    user_id: {
       target: 'User',
       type: 'one-to-one',
       cascade: true,
