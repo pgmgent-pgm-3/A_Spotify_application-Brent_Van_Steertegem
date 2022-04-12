@@ -71,7 +71,7 @@ export const postRegister = async (req, res, next) => {
 
       // validate if the role exists
       const role = await roleRepository.findOne({
-        where: { label: 'admin' },
+        where: { label: 'reader' },
       });
 
       // send an error if the role doesn't exists
@@ -87,9 +87,13 @@ export const postRegister = async (req, res, next) => {
       });
 
       // create a webtoken
-      const token = jwt.sign({ newUser }, process.env.TOKEN_SALT, {
-        expiresIn: '1h',
-      });
+      const token = jwt.sign(
+        { ...newUser, role_id: role },
+        process.env.TOKEN_SALT,
+        {
+          expiresIn: '1h',
+        }
+      );
 
       // add the cookie in response
       res.cookie('token', token, { httpOnly: true });
@@ -150,8 +154,8 @@ export const postLogin = async (req, res, next) => {
       // validate if the user exists
       const user = await userRepository.findOne({
         where: { email: req.body.email },
+        relations: ['role_id'],
       });
-
       // check if we found a user
       if (!user) {
         req.formErrors = [{ message: 'Gebruiker bestaat niet.' }];
@@ -168,7 +172,7 @@ export const postLogin = async (req, res, next) => {
       }
 
       // create a webtoken
-      const token = jwt.sign({ user }, process.env.TOKEN_SALT, {
+      const token = jwt.sign({ ...user }, process.env.TOKEN_SALT, {
         expiresIn: '1h',
       });
 

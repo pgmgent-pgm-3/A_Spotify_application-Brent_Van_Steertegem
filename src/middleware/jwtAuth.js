@@ -10,7 +10,7 @@ export const jwtAuth = (req, res, next) => {
   try {
     const decryptedToken = jwt.verify(token, process.env.TOKEN_SALT);
     req.token = decryptedToken;
-    req.role = 'admin';
+    req.role = decryptedToken.role_id.label;
     next();
   } catch (e) {
     res.clearCookie('token');

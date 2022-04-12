@@ -17,7 +17,7 @@ dbSeeder.run(RoleFactory).then((records) => {
 });
 
 // seed with the user factory
-dbSeeder.run(UserFactory, 20).then((records) => {
+dbSeeder.run(UserFactory, 65).then((records) => {
   console.log(`${records.length} seeded in db`);
   console.log(records);
 });
