@@ -6,9 +6,16 @@
                     <i class="content__icon fa-solid fa-xmark"></i> 
                 </button>
             </form>
-
             {{#each data}}
+            <li>
                 <p>{{this.email}}</p>
+                <select>
+                    {{#each @root.roles}}
+                        <option value="{{this.id}}"{{#currentRole ../this.role_id.id this.id}} selected{{/currentRole}}>{{this.label}}</option>
+                    {{/each}}
+                </select>
+            </li>
+                
             {{/each}}
         </div>
     {{/if}}      

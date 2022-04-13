@@ -11,4 +11,9 @@ export default {
   manage(manage, options) {
     return options.fn();
   },
+  currentRole(currentRoleId, roleToCheckId, options) {
+    if (currentRoleId === roleToCheckId) {
+      return options.fn();
+    }
+  },
 };

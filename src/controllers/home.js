@@ -10,11 +10,16 @@ export const home = async (req, res) => {
     const { role } = req;
     const { manage } = req.query;
     let data;
+    let roles;
     if (manage === 'users') {
       const response = await fetch(
         `http://localhost:${process.env.PORT}/api/users`
       );
       data = await response.json();
+
+      // get all roles
+      const roleRepo = getConnection().getRepository('Role');
+      roles = await roleRepo.find();
     }
 
     // get all playlists
@@ -25,7 +30,7 @@ export const home = async (req, res) => {
     const artistRepo = getConnection().getRepository('Artist');
     const artists = await artistRepo.find();
 
-    return res.render('home', { role, data, playlists, artists });
+    return res.render('home', { role, data, roles, playlists, artists });
   }
   // Gebruiker heeft geen geldige rol
   return null;
