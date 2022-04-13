@@ -21,10 +21,5 @@ export default new EntitySchema({
       type: 'one-to-many',
       joinColumn: true,
     },
-    songs: {
-      target: 'Song',
-      type: 'one-to-many',
-      joinColumn: true,
-    },
   },
 });
