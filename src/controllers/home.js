@@ -2,7 +2,7 @@
  * A Home Controller
  */
 
-import { getUsers } from './api/user.js';
+import fetch from 'node-fetch';
 
 export const home = async (req, res) => {
   if (req.role === 'admin' || req.role === 'editor' || req.role === 'reader') {
@@ -10,7 +10,10 @@ export const home = async (req, res) => {
     const { manage } = req.query;
     let data;
     if (manage === 'users') {
-      data = await getUsers();
+      const response = await fetch(
+        `http://localhost:${process.env.PORT}/api/users`
+      );
+      data = await response.json();
     }
     const playlists = [
       'Heavy',

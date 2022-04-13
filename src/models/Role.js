@@ -19,7 +19,6 @@ export default new EntitySchema({
     users: {
       target: 'User',
       type: 'one-to-many',
-      joinColumn: true,
     },
   },
 });

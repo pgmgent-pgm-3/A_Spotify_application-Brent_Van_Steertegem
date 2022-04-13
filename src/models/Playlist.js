@@ -20,12 +20,12 @@ export default new EntitySchema({
       target: 'User',
       type: 'many-to-one',
       joinColumn: true,
-      ondelete: 'CASCADE',
+      cascade: true,
     },
     songs: {
       target: 'Song',
       type: 'many-to-many',
-      joinColumn: true,
+      joinTable: true,
     },
   },
 });

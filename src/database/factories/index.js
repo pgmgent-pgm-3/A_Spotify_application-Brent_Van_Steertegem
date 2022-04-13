@@ -1,17 +1,17 @@
 import RoleFactory from './RoleFactory.js';
-import UserMetaFactory from './UserMetaFactory.js';
 import UserFactory from './UserFactory.js';
+import UserMetaFactory from './UserMetaFactory.js';
 import ArtistFactory from './ArtistFactory.js';
-import AlbumFactory from './AlbumFactory.js';
 import SongFactory from './SongFactory.js';
+import AlbumFactory from './AlbumFactory.js';
 import PlaylistFactory from './PlaylistFactory.js';
 
 export {
   RoleFactory,
-  UserMetaFactory,
   UserFactory,
+  UserMetaFactory,
   ArtistFactory,
-  AlbumFactory,
   SongFactory,
+  AlbumFactory,
   PlaylistFactory,
 };

@@ -28,8 +28,8 @@ export default new EntitySchema({
     user_id: {
       target: 'User',
       type: 'one-to-one',
-      cascade: true,
       joinColumn: true,
+      cascade: true,
     },
   },
 });

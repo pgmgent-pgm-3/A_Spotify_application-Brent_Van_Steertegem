@@ -27,8 +27,8 @@ export default new EntitySchema({
     role_id: {
       target: 'Role',
       type: 'many-to-one',
-      cascade: true,
       joinColumn: true,
+      cascade: true,
     },
   },
 });

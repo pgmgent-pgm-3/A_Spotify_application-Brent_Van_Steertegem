@@ -19,19 +19,16 @@ export default new EntitySchema({
     artist_id: {
       target: 'Artist',
       type: 'many-to-one',
-      cascade: true,
       joinColumn: true,
+      cascade: true,
     },
     album_id: {
       target: 'Album',
       type: 'many-to-many',
-      cascade: true,
-      joinColumn: true,
     },
     playlists: {
       target: 'Playlist',
       type: 'many-to-many',
-      joinColumn: true,
     },
   },
 });

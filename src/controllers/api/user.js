@@ -9,10 +9,10 @@ const { getConnection } = typeorm;
 export const postUser = async (req, res, next) => {
   try {
     // get the repository
-    const userRepository = getConnection().getRepository('User');
+    const repo = getConnection().getRepository('User');
 
     // insert the user
-    const insertedUser = await userRepository.save(req.body);
+    const insertedUser = await repo.save(req.body);
 
     // send a status code
     res.status(200).json(insertedUser);
@@ -24,15 +24,14 @@ export const postUser = async (req, res, next) => {
 export const getUsers = async (req, res, next) => {
   try {
     // get the repository
-    const userRepository = getConnection().getRepository('User');
+    const repo = getConnection().getRepository('User');
 
     // get all users and return them with status code 200
-    return await userRepository.find();
-    // return res.status(200).json(
-    //   await userRepository.find({
-    //     relations: ['user_meta', 'roles'],
-    //   })
-    // );
+    return res.status(200).json(
+      await repo.find({
+        relations: ['user_meta_id', 'role_id'],
+      })
+    );
   } catch (e) {
     next(e.message);
   }
@@ -40,6 +39,26 @@ export const getUsers = async (req, res, next) => {
 
 export const getUser = async (req, res, next) => {
   try {
+    // catch the id from params
+    const { id } = req.params;
+
+    // validate incoming variables
+    if (!id) throw new Error('Please specify an id to get');
+
+    // get the repository
+    const repo = getConnection().getRepository('User');
+
+    // get the requested user
+    const user = await repo.findOne({
+      where: { id },
+      relations: ['user_meta_id', 'role_id'],
+    });
+
+    // check if the user exist
+    if (!user) throw new Error(`User with id: ${id} does not exist.`);
+
+    // return the user with status code 200
+    return res.status(200).json(user);
   } catch (e) {
     next(e.message);
   }
@@ -47,6 +66,26 @@ export const getUser = async (req, res, next) => {
 
 export const deleteUser = async (req, res, next) => {
   try {
+    // catch the id from params
+    const { id } = req.params;
+
+    // validate incoming variables
+    if (!id) throw new Error('Please specify an id to get');
+
+    // get the repository
+    const repo = getConnection().getRepository('User');
+
+    // get the requested user
+    const user = await repo.findOne({
+      where: { id },
+      relations: ['user_meta_id', 'role_id'],
+    });
+
+    // check if the user exist
+    if (!user) throw new Error(`User with id: ${id} does not exist.`);
+
+    // return the user with status code 200
+    return res.status(200).json(await repo.remove({ id }));
   } catch (e) {
     next(e.message);
   }

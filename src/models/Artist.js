@@ -19,7 +19,10 @@ export default new EntitySchema({
     albums: {
       target: 'Album',
       type: 'one-to-many',
-      joinColumn: true,
+    },
+    songs: {
+      target: 'Song',
+      type: 'one-to-many',
     },
   },
 });
