@@ -8,8 +8,10 @@ export default {
       return options.fn();
     }
   },
-  manage(manage, options) {
-    return options.fn();
+  manageType(manage, type, options) {
+    if (manage === type) {
+      return options.fn();
+    }
   },
   currentRole(currentRoleId, roleToCheckId, options) {
     if (currentRoleId === roleToCheckId) {

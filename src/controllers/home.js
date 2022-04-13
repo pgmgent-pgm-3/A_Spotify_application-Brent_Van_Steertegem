@@ -30,7 +30,14 @@ export const home = async (req, res) => {
     const artistRepo = getConnection().getRepository('Artist');
     const artists = await artistRepo.find();
 
-    return res.render('home', { role, data, roles, playlists, artists });
+    return res.render('home', {
+      role,
+      manage,
+      data,
+      roles,
+      playlists,
+      artists,
+    });
   }
   // Gebruiker heeft geen geldige rol
   return null;

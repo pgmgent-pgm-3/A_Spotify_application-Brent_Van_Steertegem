@@ -16,15 +16,6 @@ main {
   height: calc(calc(100vh - 5rem) - 4px);
 }
 
-/* modal */
-.modal {
-  padding: 1rem;
-  width: calc(100vw - 2rem);
-  height: calc(100vh - 2rem);
-  position: absolute;
-  background-color: black;
-}
-
 /* sidebar */
 .sidebar {
   width: 20rem;
@@ -190,4 +181,24 @@ padding-bottom: 1rem;
   display: block;
   margin-top: 0.3rem;
   font-size: 0.85rem;
+}
+
+/* modal */
+.modal {
+  padding: 1rem;
+  width: calc(100% - 2rem);
+  height: calc(100vh - 2rem);
+  position: absolute;
+  background-color: black;
+}
+
+/* manage users */
+.manage_users {
+  padding-bottom: 0.5rem;
+}
+
+.manage_user {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
 }
