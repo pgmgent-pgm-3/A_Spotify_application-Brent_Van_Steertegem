@@ -26,6 +26,7 @@ export default new EntitySchema({
       target: 'Song',
       type: 'many-to-many',
       joinTable: true,
+      cascade: true,
     },
   },
 });

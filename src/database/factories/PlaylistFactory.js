@@ -31,7 +31,7 @@ class PlaylistFactory extends Factory {
     for (let i = 0; i < randAmount; i++) {
       const randNumber = Math.floor(Math.random() * songs.length);
       const song = songs.splice(randNumber, 1);
-      selectedSongs.push(song[0].id);
+      selectedSongs.push(song[0]);
     }
 
     const playlist = {

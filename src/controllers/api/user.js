@@ -84,11 +84,18 @@ export const deleteUser = async (req, res, next) => {
     // check if the user exist
     if (!user) throw new Error(`User with id: ${id} does not exist.`);
 
+    // update the user to remove the user_meta_id
+    const userMetaId = user.user_meta_id.id;
+    await repo.save({
+      ...user,
+      user_meta_id: null,
+    });
+
     // remove the user meta
     const userMetaRepo = getConnection().getRepository('UserMeta');
 
     const userMeta = await userMetaRepo.findOne({
-      where: { id: user.user_meta_id },
+      where: { id: userMetaId },
     });
 
     if (userMeta) await userMetaRepo.remove(userMeta);
