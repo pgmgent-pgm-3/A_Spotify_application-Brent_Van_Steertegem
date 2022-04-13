@@ -2,6 +2,7 @@ import RoleFactory from './RoleFactory.js';
 import UserMetaFactory from './UserMetaFactory.js';
 import UserFactory from './UserFactory.js';
 import ArtistFactory from './ArtistFactory.js';
+import AlbumFactory from './AlbumFactory.js';
 import SongFactory from './SongFactory.js';
 
 export {
@@ -9,5 +10,6 @@ export {
   UserMetaFactory,
   UserFactory,
   ArtistFactory,
+  AlbumFactory,
   SongFactory,
 };

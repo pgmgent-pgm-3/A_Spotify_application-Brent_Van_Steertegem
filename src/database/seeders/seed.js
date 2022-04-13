@@ -4,6 +4,7 @@ import {
   RoleFactory,
   UserFactory,
   ArtistFactory,
+  AlbumFactory,
   SongFactory,
 } from '../factories/index.js';
 import entities from '../../models/index.js';
@@ -29,6 +30,12 @@ const dbSeeder = new DatabaseSeeder(
 
 // // seed with the artist factory
 // dbSeeder.run(ArtistFactory, 20).then((records) => {
+//   console.log(`${records.length} seeded in db`);
+//   console.log(records);
+// });
+
+// // seed with the album factory
+// dbSeeder.run(AlbumFactory, 35).then((records) => {
 //   console.log(`${records.length} seeded in db`);
 //   console.log(records);
 // });
