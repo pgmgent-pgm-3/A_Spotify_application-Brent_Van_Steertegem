@@ -4,6 +4,7 @@ import UserFactory from './UserFactory.js';
 import ArtistFactory from './ArtistFactory.js';
 import AlbumFactory from './AlbumFactory.js';
 import SongFactory from './SongFactory.js';
+import PlaylistFactory from './PlaylistFactory.js';
 
 export {
   RoleFactory,
@@ -12,4 +13,5 @@ export {
   ArtistFactory,
   AlbumFactory,
   SongFactory,
+  PlaylistFactory,
 };
