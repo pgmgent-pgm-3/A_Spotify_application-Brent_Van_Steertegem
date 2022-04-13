@@ -84,6 +84,31 @@ export const deleteUser = async (req, res, next) => {
     // check if the user exist
     if (!user) throw new Error(`User with id: ${id} does not exist.`);
 
+    // remove the user meta
+    const userMetaRepo = getConnection().getRepository('UserMeta');
+
+    const userMeta = await userMetaRepo.findOne({
+      where: { id: user.user_meta_id },
+    });
+
+    if (userMeta) await userMetaRepo.remove(userMeta);
+
+    // remove the playlists
+    const playlistRepo = getConnection().getRepository('Playlist');
+
+    const playlists = await playlistRepo.find({
+      where: { user_id: id },
+      relations: ['user_id'],
+    });
+
+    if (playlists) {
+      // eslint-disable-next-line no-restricted-syntax
+      for (const playlist of playlists) {
+        // eslint-disable-next-line no-await-in-loop
+        await playlistRepo.remove(playlist);
+      }
+    }
+
     // return the user with status code 200
     return res.status(200).json(await repo.remove({ id }));
   } catch (e) {
