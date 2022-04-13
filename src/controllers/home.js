@@ -3,6 +3,7 @@
  */
 
 import fetch from 'node-fetch';
+import { getConnection } from 'typeorm';
 
 export const home = async (req, res) => {
   if (req.role === 'admin' || req.role === 'editor' || req.role === 'reader') {
@@ -15,20 +16,15 @@ export const home = async (req, res) => {
       );
       data = await response.json();
     }
-    const playlists = [
-      'Heavy',
-      "Rock 'n roll",
-      'Fun',
-      'Way too funny',
-      'Hard Rock',
-    ];
-    const artists = [
-      'Dream Widow',
-      'Slipknot',
-      'Rammstein',
-      "Another Day's Armor",
-      'Sick Puppies',
-    ];
+
+    // get all playlists
+    const playlistRepo = getConnection().getRepository('Playlist');
+    const playlists = await playlistRepo.find();
+
+    // get all artists
+    const artistRepo = getConnection().getRepository('Artist');
+    const artists = await artistRepo.find();
+
     return res.render('home', { role, data, playlists, artists });
   }
   // Gebruiker heeft geen geldige rol
