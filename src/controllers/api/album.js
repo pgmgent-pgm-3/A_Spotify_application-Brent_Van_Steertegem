@@ -38,6 +38,17 @@ export const postAlbum = async (req, res, next) => {
         return next();
       }
 
+      if (req.body.songs) {
+        // eslint-disable-next-line no-restricted-syntax
+        for (const song of req.body.songs) {
+          if (song.artist_id !== req.body.artist_id) {
+            req.formErrors = [{ message: 'Song does not belong to artist.' }];
+            res.status(400).send('Song does not belong to artist.');
+            return next();
+          }
+        }
+      }
+
       // insert the album
       const insertedAlbum = await repo.save(req.body);
 
