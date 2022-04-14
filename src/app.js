@@ -77,9 +77,9 @@ app.post('/', jwtAuth, home);
  */
 app.post('/api/login', ...validationAuthentication, postLogin, login);
 app.post('/api/register', ...validationAuthentication, postRegister, register);
-app.get('/api/users', getUsers, home);
-app.get('/api/user/:id', getUser, home);
-app.delete('/api/user/:id', deleteUser, home);
+app.get('/api/users', jwtAuth, getUsers, home);
+app.get('/api/user/:id', jwtAuth, getUser, home);
+app.delete('/api/user/:id', jwtAuth, deleteUser, home);
 // post artist needs validation
 app.post('/api/artist', jwtAuth, postArtist, home);
 app.put('/api/artist', jwtAuth, putArtist, home);

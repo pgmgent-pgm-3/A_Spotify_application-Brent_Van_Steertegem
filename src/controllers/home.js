@@ -13,7 +13,12 @@ export const home = async (req, res) => {
     let roles;
     if (manage === 'users') {
       const response = await fetch(
-        `http://localhost:${process.env.PORT}/api/users`
+        `http://localhost:${process.env.PORT}/api/users`,
+        {
+          headers: {
+            cookie: `token=${req.cookies.token}`,
+          },
+        }
       );
       data = await response.json();
 

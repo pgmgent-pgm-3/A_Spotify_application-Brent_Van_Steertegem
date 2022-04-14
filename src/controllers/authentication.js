@@ -1,5 +1,5 @@
 /**
- * A Register Controller
+ * A authentication Controller
  */
 
 import { getConnection } from 'typeorm';
