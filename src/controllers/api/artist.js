@@ -44,7 +44,7 @@ export const postArtist = async (req, res, next) => {
       return res.status(200).json(insertedArtist);
     }
     return res
-      .status(403)
+      .status(405)
       .send('You are not authorised to perform this action.');
   } catch (e) {
     next(e.message);
@@ -123,7 +123,7 @@ export const putArtist = async (req, res, next) => {
       );
     }
     return res
-      .status(403)
+      .status(405)
       .send('You are not authorised to perform this action.');
   } catch (e) {
     next(e.message);
@@ -185,7 +185,7 @@ export const deleteArtist = async (req, res, next) => {
       // return res.status(200).json(await repo.remove(artist));
     }
     return res
-      .status(403)
+      .status(405)
       .send('You are not authorised to perform this action.');
   } catch (e) {
     next(e.message);

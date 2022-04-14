@@ -45,7 +45,7 @@ export const postAlbum = async (req, res, next) => {
       return res.status(200).json(insertedAlbum);
     }
     return res
-      .status(403)
+      .status(405)
       .send('You are not authorised to perform this action.');
   } catch (e) {
     next(e.message);
@@ -155,7 +155,7 @@ export const putAlbum = async (req, res, next) => {
       );
     }
     return res
-      .status(403)
+      .status(405)
       .send('You are not authorised to perform this action.');
   } catch (e) {
     next(e.message);
@@ -184,7 +184,7 @@ export const deleteAlbum = async (req, res, next) => {
       // return res.status(200).json(await repo.remove(Album));
     }
     return res
-      .status(403)
+      .status(405)
       .send('You are not authorised to perform this action.');
   } catch (e) {
     next(e.message);
