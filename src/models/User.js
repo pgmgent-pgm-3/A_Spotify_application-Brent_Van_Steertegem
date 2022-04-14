@@ -23,6 +23,7 @@ export default new EntitySchema({
       target: 'UserMeta',
       type: 'one-to-one',
       joinColumn: true,
+      cascade: true,
     },
     role_id: {
       target: 'Role',

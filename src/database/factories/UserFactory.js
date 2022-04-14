@@ -42,6 +42,13 @@ class UserFactory extends Factory {
       role_id: roleId,
     });
 
+    // update the user meta so it contains the user id
+    const userMetaRepo = getConnection().getRepository('UserMeta');
+    await userMetaRepo.save({
+      ...userMeta,
+      user_id: record.id,
+    });
+
     // return
     return record;
   }
