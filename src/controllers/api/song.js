@@ -86,7 +86,10 @@ export const putsong = async (req, res, next) => {
       const repo = getConnection().getRepository('Song');
 
       // validate if the song exists
-      const song = await repo.findOne({ id });
+      const song = await repo.findOne({
+        where: { id },
+        relations: ['artist_id'],
+      });
 
       if (!song) {
         req.formErrors = [{ message: `song with id: ${id} does not exist.` }];
