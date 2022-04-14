@@ -28,7 +28,7 @@ export const postArtist = async (req, res, next) => {
 
       // validate if the artist already exists
       const artist = await repo.findOne({
-        where: { name: req.body.artistName },
+        where: { name: req.body.name },
       });
 
       if (artist) {

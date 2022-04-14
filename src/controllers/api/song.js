@@ -28,7 +28,7 @@ export const postSong = async (req, res, next) => {
 
       // validate if the song already exists
       const song = await repo.findOne({
-        where: { name: req.body.songName, artist_id: req.body.artist_id },
+        where: { name: req.body.name, artist_id: req.body.artist_id },
         relations: ['artist_id'],
       });
 
