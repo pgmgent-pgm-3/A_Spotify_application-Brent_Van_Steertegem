@@ -42,8 +42,12 @@ export const postAlbum = async (req, res, next) => {
         // eslint-disable-next-line no-restricted-syntax
         for (const song of req.body.songs) {
           if (song.artist_id !== req.body.artist_id) {
-            req.formErrors = [{ message: 'Song does not belong to artist.' }];
-            res.status(400).send('Song does not belong to artist.');
+            req.formErrors = [
+              { message: 'One or more songs do not belong to the artist.' },
+            ];
+            res
+              .status(400)
+              .send('One or more songs do not belong to the artist.');
             return next();
           }
         }
@@ -157,13 +161,18 @@ export const putAlbum = async (req, res, next) => {
         }
       }
 
+      // update songs
+      if (req.body.songs) {
+        album.songs = req.body.songs;
+      }
+
+      // update album name
+      if (req.body.newAlbumName) {
+        album.name = req.body.newAlbumName;
+      }
+
       // update the album and send back status code 200
-      return res.status(200).json(
-        await repo.save({
-          ...album,
-          name: req.body.newAlbumName,
-        })
-      );
+      return res.status(200).json(await repo.save(album));
     }
     return res
       .status(405)
