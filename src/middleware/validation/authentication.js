@@ -7,12 +7,11 @@ import { body } from 'express-validator';
 export default [
   body('email')
     .notEmpty()
-    .withMessage('E-mail is een verplicht veld')
+    .withMessage('E-mail is required.')
     .bail()
     .isEmail()
-    // .normalizeEmail()
-    .withMessage('E-mail is niet juist.'),
+    .withMessage('E-mail is incorrect.'),
   body('password')
     .isLength({ min: 6 })
-    .withMessage('Passwoord moet minstens 6 karakters lang zijn.'),
+    .withMessage('Password should at least contain 6 characters.'),
 ];

@@ -23,6 +23,7 @@ import swaggerDefinition from './docs/swagger.js';
 import { deleteUser, getUser, getUsers } from './controllers/api/user.js';
 import {
   deleteArtist,
+  getArtists,
   postArtist,
   putArtist,
 } from './controllers/api/artist.js';
@@ -82,8 +83,9 @@ app.get('/api/user/:id', jwtAuth, getUser, home);
 app.delete('/api/user/:id', jwtAuth, deleteUser, home);
 // post artist needs validation
 app.post('/api/artist', jwtAuth, postArtist, home);
-app.put('/api/artist', jwtAuth, putArtist, home);
-app.delete('/api/artist', jwtAuth, deleteArtist, home);
+app.get('/api/artists', jwtAuth, getArtists, home);
+app.put('/api/artist/:id', jwtAuth, putArtist, home);
+app.delete('/api/artist/:id', jwtAuth, deleteArtist, home);
 
 /**
  * Create database connection and start listening

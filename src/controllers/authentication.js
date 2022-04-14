@@ -47,60 +47,59 @@ export const postRegister = async (req, res, next) => {
       errors.array().forEach(({ msg, param }) => {
         req.formErrorFields[param] = msg;
       });
-      next();
-    } else {
-      // get the user repository
-      const userRepository = getConnection().getRepository('User');
-
-      // validate if the user already exists
-      const user = await userRepository.findOne({
-        where: { email: req.body.email },
-      });
-
-      if (user) {
-        req.formErrors = [{ message: 'Gebruiker bestaat reeds.' }];
-        return next();
-      }
-
-      // hash the password
-      const hashedPassword = bcrypt.hashSync(req.body.password, 12);
-
-      // get all roles from the roles repository
-      // get the role repository
-      const roleRepository = getConnection().getRepository('Role');
-
-      // validate if the role exists
-      const role = await roleRepository.findOne({
-        where: { label: 'reader' },
-      });
-
-      // send an error if the role doesn't exists
-      if (!role) {
-        return next();
-      }
-
-      // create a new user
-      const newUser = await userRepository.save({
-        email: req.body.email,
-        password: hashedPassword,
-        role_id: role.id,
-      });
-
-      // create a webtoken
-      const token = jwt.sign(
-        { ...newUser, role_id: role },
-        process.env.TOKEN_SALT,
-        {
-          expiresIn: '1h',
-        }
-      );
-
-      // add the cookie in response
-      res.cookie('token', token, { httpOnly: true });
-
-      // redirect the user so he's logged in right away
-      res.redirect('/');
+      return next();
     }
+    // get the user repository
+    const userRepository = getConnection().getRepository('User');
+
+    // validate if the user already exists
+    const user = await userRepository.findOne({
+      where: { email: req.body.email },
+    });
+
+    if (user) {
+      req.formErrors = [{ message: 'User already exists.' }];
+      res.status(409).send('User already exists');
+      return next();
+    }
+
+    // hash the password
+    const hashedPassword = bcrypt.hashSync(req.body.password, 12);
+
+    // get all roles from the roles repository
+    const roleRepository = getConnection().getRepository('Role');
+
+    // validate if the role exists
+    const role = await roleRepository.findOne({
+      where: { label: 'reader' },
+    });
+
+    // send an error if the role doesn't exists
+    if (!role) {
+      return next();
+    }
+
+    // create a new user
+    const newUser = await userRepository.save({
+      email: req.body.email,
+      password: hashedPassword,
+      role_id: role.id,
+    });
+
+    // create a webtoken
+    const token = jwt.sign(
+      { ...newUser, role_id: role },
+      process.env.TOKEN_SALT,
+      {
+        expiresIn: '1h',
+      }
+    );
+
+    // add the cookie in response
+    res.cookie('token', token, { httpOnly: true });
+
+    // redirect the user so he's logged in right away
+    res.redirect('/');
   } catch (e) {
     next(e.message);
   }
@@ -146,42 +145,43 @@ export const postLogin = async (req, res, next) => {
       errors.array().forEach(({ msg, param }) => {
         req.formErrorFields[param] = msg;
       });
-      next();
-    } else {
-      // get the user repository
-      const userRepository = getConnection().getRepository('User');
-
-      // validate if the user exists
-      const user = await userRepository.findOne({
-        where: { email: req.body.email },
-        relations: ['role_id'],
-      });
-      // check if we found a user
-      if (!user) {
-        req.formErrors = [{ message: 'Gebruiker bestaat niet.' }];
-        return next();
-      }
-
-      // decrypt the password
-      const isEqual = bcrypt.compareSync(req.body.password, user.password);
-
-      // check if incoming password is equal with the one in our database
-      if (!isEqual) {
-        req.formErrors = [{ message: 'Wachtwoord is onjuist.' }];
-        return next();
-      }
-
-      // create a webtoken
-      const token = jwt.sign({ ...user }, process.env.TOKEN_SALT, {
-        expiresIn: '1h',
-      });
-
-      // add the cookie in response
-      res.cookie('token', token, { httpOnly: true });
-
-      // redirect to homepage
-      res.redirect('/');
+      return next();
     }
+    // get the user repository
+    const userRepository = getConnection().getRepository('User');
+
+    // validate if the user exists
+    const user = await userRepository.findOne({
+      where: { email: req.body.email },
+      relations: ['role_id'],
+    });
+
+    // check if we found a user
+    if (!user) {
+      req.formErrors = [{ message: 'User does not exist.' }];
+      res.status(404).send('User does not exist.');
+      return next();
+    }
+
+    // decrypt the password
+    const isEqual = bcrypt.compareSync(req.body.password, user.password);
+
+    // check if incoming password is equal with the one in our database
+    if (!isEqual) {
+      req.formErrors = [{ message: 'Password is incorrect.' }];
+      return next();
+    }
+
+    // create a webtoken
+    const token = jwt.sign({ ...user }, process.env.TOKEN_SALT, {
+      expiresIn: '1h',
+    });
+
+    // add the cookie in response
+    res.cookie('token', token, { httpOnly: true });
+
+    // redirect to homepage
+    res.redirect('/');
   } catch (e) {
     next(e.message);
   }
