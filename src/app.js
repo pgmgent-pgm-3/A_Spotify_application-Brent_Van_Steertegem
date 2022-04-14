@@ -28,7 +28,7 @@ import {
   putArtist,
 } from './controllers/api/artist.js';
 import {
-  // deleteSong,
+  deleteSong,
   getSongs,
   getSong,
   postSong,
@@ -39,6 +39,7 @@ import {
   getAlbums,
   postAlbum,
   putAlbum,
+  deleteAlbum,
 } from './controllers/api/album.js';
 
 const app = express();
@@ -106,14 +107,14 @@ app.get('/api/songs', jwtAuth, getSongs, home);
 app.get('/api/song/:id', jwtAuth, getSong, home);
 // put song needs validation
 app.put('/api/song/:id', jwtAuth, putSong, home);
-// app.delete('/api/song/:id', jwtAuth, deleteSong, home);
+app.delete('/api/song/:id', jwtAuth, deleteSong, home);
 // post song needs validation
 app.post('/api/album', jwtAuth, postAlbum, home);
 app.get('/api/albums', jwtAuth, getAlbums, home);
 app.get('/api/album/:id', jwtAuth, getAlbum, home);
 // put album needs validation
 app.put('/api/album/:id', jwtAuth, putAlbum, home);
-// app.delete('/api/album/:id', jwtAuth, deleteAlbum, home);
+app.delete('/api/album/:id', jwtAuth, deleteAlbum, home);
 
 /**
  * Create database connection and start listening

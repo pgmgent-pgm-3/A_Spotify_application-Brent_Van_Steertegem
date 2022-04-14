@@ -191,17 +191,30 @@ export const deleteAlbum = async (req, res, next) => {
       // get the repository
       const repo = getConnection().getRepository('Album');
 
-      // validate if the Album exists
-      const Album = await repo.findOne({ id });
+      // validate if the album exists
+      const album = await repo.findOne({
+        where: { id },
+        relations: ['songs'],
+      });
 
-      if (!Album) {
-        req.formErrors = [{ message: `Album with id: ${id} does not exist.` }];
-        res.status(404).send('Album does not exist.');
+      if (!album) {
+        req.formErrors = [{ message: `album with id: ${id} does not exist.` }];
+        res.status(404).send('album does not exist.');
         return next();
       }
 
-      // remove the Album and send back status code 200
-      // return res.status(200).json(await repo.remove(Album));
+      // remove all songs related to the album
+      const songRepo = getConnection().getRepository('Song');
+      const { songs } = album;
+      album.songs = null;
+      // eslint-disable-next-line no-restricted-syntax
+      for (const song of songs) {
+        // eslint-disable-next-line no-await-in-loop
+        await songRepo.remove(song);
+      }
+
+      // remove the album and send back status code 200
+      return res.status(200).json(await repo.remove(album));
     }
     return res
       .status(405)

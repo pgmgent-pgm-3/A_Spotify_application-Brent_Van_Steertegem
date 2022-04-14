@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /**
  * Song API controller
  */
@@ -180,8 +181,43 @@ export const deleteSong = async (req, res, next) => {
         return next();
       }
 
+      // get all playlists
+      const playlistRepo = getConnection().getRepository('Playlist');
+      const playlists = await playlistRepo.find({
+        relations: ['songs', 'user_id'],
+      });
+
+      // remove song from all playlists
+      for (const playlist of playlists) {
+        for (const playlistSong of playlist.songs) {
+          if (playlistSong.id === song.id) {
+            playlist.songs.splice(playlist.songs.indexOf(playlistSong, 1));
+            // eslint-disable-next-line no-await-in-loop
+            await playlistRepo.save(playlist);
+          }
+        }
+      }
+
+      // get all albums
+      const albumRepo = getConnection().getRepository('Album');
+      const albums = await playlistRepo.find({
+        relations: ['songs'],
+      });
+
+      // remove song from all albums
+      for (const album of albums) {
+        for (const albumSong of album.songs) {
+          if (albumSong.id === song.id) {
+            album.songs.splice(album.songs.indexOf(albumSong, 1));
+            // eslint-disable-next-line no-await-in-loop
+            await albumRepo.save(album);
+          }
+        }
+      }
+
+      await repo.remove(song);
       // remove the song and send back status code 200
-      // return res.status(200).json(await repo.remove(song));
+      return res.status(200).json(await repo.remove(song));
     }
     return res
       .status(405)
