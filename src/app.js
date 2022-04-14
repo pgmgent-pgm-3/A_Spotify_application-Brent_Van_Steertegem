@@ -28,10 +28,11 @@ import {
   putArtist,
 } from './controllers/api/artist.js';
 import {
-  deletesong,
-  getsongs,
-  postsong,
-  putsong,
+  deleteSong,
+  getSongs,
+  getSong,
+  postSong,
+  putSong,
 } from './controllers/api/song.js';
 
 const app = express();
@@ -91,12 +92,13 @@ app.delete('/api/user/:id', jwtAuth, deleteUser, home);
 app.post('/api/artist', jwtAuth, postArtist, home);
 app.get('/api/artists', jwtAuth, getArtists, home);
 app.put('/api/artist/:id', jwtAuth, putArtist, home);
-app.delete('/api/artist/:id', jwtAuth, deleteArtist, home);
+// app.delete('/api/artist/:id', jwtAuth, deleteArtist, home);
 // post song needs validation
-app.post('/api/song', jwtAuth, postsong, home);
-app.get('/api/songs', jwtAuth, getsongs, home);
-app.put('/api/song/:id', jwtAuth, putsong, home);
-app.delete('/api/song/:id', jwtAuth, deletesong, home);
+app.post('/api/song', jwtAuth, postSong, home);
+app.get('/api/songs', jwtAuth, getSongs, home);
+app.get('/api/song/:id', jwtAuth, getSong, home);
+app.put('/api/song/:id', jwtAuth, putSong, home);
+// app.delete('/api/song/:id', jwtAuth, deleteSong, home);
 
 /**
  * Create database connection and start listening

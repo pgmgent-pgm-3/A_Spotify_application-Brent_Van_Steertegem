@@ -8,7 +8,7 @@ import { isAdmin, isEditor } from '../authorisation.js';
 
 const { getConnection } = typeorm;
 
-export const postsong = async (req, res, next) => {
+export const postSong = async (req, res, next) => {
   try {
     // check if the user's role is admin
     if (isAdmin(req)) {
@@ -52,7 +52,7 @@ export const postsong = async (req, res, next) => {
   }
 };
 
-export const getsongs = async (req, res, next) => {
+export const getSongs = async (req, res, next) => {
   try {
     // get the repository
     const repo = getConnection().getRepository('Song');
@@ -64,7 +64,34 @@ export const getsongs = async (req, res, next) => {
   }
 };
 
-export const putsong = async (req, res, next) => {
+export const getSong = async (req, res, next) => {
+  try {
+    // get the id from params
+    const { id } = req.params;
+
+    // get the repository
+    const repo = getConnection().getRepository('Song');
+
+    // validate if the song exists
+    const song = await repo.findOne({
+      where: { id },
+      relations: ['artist_id'],
+    });
+
+    if (!song) {
+      req.formErrors = [{ message: `song with id: ${id} does not exist.` }];
+      res.status(404).send('song does not exist.');
+      return next();
+    }
+
+    // return the song with status code 200
+    return res.status(200).json(song);
+  } catch (e) {
+    next(e.message);
+  }
+};
+
+export const putSong = async (req, res, next) => {
   try {
     if (isEditor) {
       // validate the incoming body
@@ -135,7 +162,7 @@ export const putsong = async (req, res, next) => {
   }
 };
 
-export const deletesong = async (req, res, next) => {
+export const deleteSong = async (req, res, next) => {
   try {
     if (isAdmin) {
       // get the id from params
