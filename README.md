@@ -7,7 +7,8 @@ Full specs of the application will be described below in the article 'Feature Ov
 
 # Installation
 To use this application simply open the root folder of this project in a terminal window and type `npm install` or `npm i` for short.  
-To actually run the application, simply type `npm run start:dev` in the same terminal and click on the link in the terminal or manually go to 'http://localhost:PORT' where PORT is the port you specified.
+To actually run the application, simply type `npm run start:dev` in the same terminal and click on the link in the terminal or manually go to 'http://localhost:PORT' where PORT is the port you specified.  
+The database has already been seeded but if you wish to seed it again then you simply have to type `npm run seed` in the terminal.
 
 # Feature Overview
 By making use of the API you can:
@@ -41,6 +42,8 @@ By making use of the user interface of the appliction you can:
 
 \* marks you need to be either en editer or an admin to perform this action.  
 \** marks you need to be an admin to perform an action.
+
+By adding `/api-docs` to the base url of the application you can watch the documentation of all endpoints.
 
 # Author
 Created by Brent Van Steertegem.
