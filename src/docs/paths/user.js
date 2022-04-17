@@ -6,8 +6,8 @@ import userResponse from './responses/User.js';
 
 export default {
   '/users': {
-    summary: 'Gets all the users',
-    description: 'Gets all the users in the database...',
+    summary: 'Get all the users',
+    description: 'Get all the users in the database...',
     get: {
       tags: ['Users'],
       responses: {

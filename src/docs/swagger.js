@@ -42,6 +42,11 @@ export default {
       description:
         'All the create, read, update and delete actions for the songs.',
     },
+    {
+      name: 'Albums',
+      description:
+        'All the create, read, update and delete actions for the albums.',
+    },
   ],
   paths,
   components: {

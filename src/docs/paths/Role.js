@@ -25,8 +25,8 @@ export default {
       responses: roleResponse,
     },
     '/roles': {
-      summary: 'Gets all the roles',
-      description: 'Gets all the roles in the database...',
+      summary: 'Get all the roles',
+      description: 'Get all the roles in the database...',
       get: {
         tags: ['Roles'],
         responses: {

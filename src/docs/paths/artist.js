@@ -25,8 +25,8 @@ export default {
     },
   },
   '/artists': {
-    summary: 'Gets all the artists',
-    description: 'Gets all the artists in the database...',
+    summary: 'Get all the artists',
+    description: 'Get all the artists in the database...',
     get: {
       tags: ['Artists'],
       responses: {

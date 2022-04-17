@@ -91,8 +91,7 @@ export default {
     properties: {
       name: { type: 'string' },
       artist_id: {
-        id: { type: 'number' },
-        name: { type: 'string' },
+        $ref: '#/components/schemas/Artist',
       },
     },
     example: {
@@ -101,6 +100,76 @@ export default {
         id: 12,
         name: 'PCI',
       },
+    },
+  },
+  Album: {
+    properties: {
+      id: { type: 'number' },
+      name: { type: 'string' },
+      artist_id: {
+        $ref: '#/components/schemas/Artist',
+      },
+      songs: [
+        {
+          $ref: '#/components/schemas/Song',
+        },
+      ],
+    },
+    example: {
+      id: 36,
+      name: 'Another Fly on the Wall',
+      artist_id: {
+        id: 12,
+        name: 'PCI',
+      },
+      songs: [
+        {
+          id: 17,
+          name: 'Division',
+        },
+        {
+          id: 18,
+          name: 'Kentucky Colorado asynchronous',
+        },
+        {
+          id: 19,
+          name: 'Graphical PCI Dynamic',
+        },
+      ],
+    },
+  },
+  AlbumInput: {
+    properties: {
+      name: { type: 'string' },
+      artist_id: {
+        $ref: '#/components/schemas/Artist',
+      },
+      songs: [
+        {
+          $ref: '#/components/schemas/Song',
+        },
+      ],
+    },
+    example: {
+      name: 'Another Fly on the Wall',
+      artist_id: {
+        id: 12,
+        name: 'PCI',
+      },
+      songs: [
+        {
+          id: 17,
+          name: 'Division',
+        },
+        {
+          id: 18,
+          name: 'Kentucky Colorado asynchronous',
+        },
+        {
+          id: 19,
+          name: 'Graphical PCI Dynamic',
+        },
+      ],
     },
   },
 };

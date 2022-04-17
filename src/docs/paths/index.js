@@ -1,11 +1,13 @@
 import authentication from './Authentication.js';
-import user from './user.js';
-import artist from './artist.js';
-import song from './song.js';
+import user from './User.js';
+import artist from './Artist.js';
+import song from './Song.js';
+import album from './Album.js';
 
 export default {
   ...authentication,
   ...user,
   ...artist,
   ...song,
+  ...album,
 };

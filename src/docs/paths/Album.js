@@ -1,43 +1,43 @@
 /**
- * The Song paths
+ * The Album paths
  */
 
-import songResponse from './responses/Song.js';
+import albumResponse from './responses/Album.js';
 
 export default {
-  '/song': {
-    summary: 'Send a request to the server to create a new song.',
+  '/album': {
+    summary: 'Send a request to the server to create a new album.',
     description:
-      'Send a request to the server with your desired information in order to create a new song.',
+      'Send a request to the server with your desired information in order to create a new album.',
     post: {
-      tags: ['Songs'],
+      tags: ['Albums'],
       requestBody: {
         required: true,
         content: {
           'application/json': {
             schema: {
-              $ref: '#/components/schemas/SongInput',
+              $ref: '#/components/schemas/AlbumInput',
             },
           },
         },
       },
-      responses: songResponse,
+      responses: albumResponse,
     },
   },
-  '/songs': {
-    summary: 'Get all the songs',
-    description: 'Get all the songs in the database...',
+  '/albums': {
+    summary: 'Gets all the albums',
+    description: 'Gets all the albums in the database...',
     get: {
-      tags: ['Songs'],
+      tags: ['Albums'],
       responses: {
         200: {
-          description: 'Fetching song was a success!',
+          description: 'Fetching albums was a success!',
           content: {
             'application/json': {
               schema: {
                 type: 'array',
                 items: {
-                  $ref: '#/components/schemas/Songs',
+                  $ref: '#/components/schemas/Albums',
                 },
               },
             },
@@ -46,11 +46,11 @@ export default {
       },
     },
   },
-  '/song/{id}': {
-    summary: 'Manipulate an existing song',
-    description: 'Manipulate an existing song...',
+  '/album/{id}': {
+    summary: 'Manipulate an existing album',
+    description: 'Manipulate an existing album...',
     get: {
-      tags: ['Songs'],
+      tags: ['Albums'],
       parameters: [
         {
           in: 'path',
@@ -60,18 +60,18 @@ export default {
             type: 'integer',
             minimum: 1,
           },
-          description: 'The song Id',
+          description: 'The album Id',
         },
       ],
       responses: {
         200: {
-          description: 'Fetching song was a success!',
+          description: 'Fetching album was a success!',
           content: {
             'application/json': {
               schema: {
                 type: 'array',
                 items: {
-                  $ref: '#/components/schemas/Songs',
+                  $ref: '#/components/schemas/Albums',
                 },
               },
             },
@@ -80,7 +80,7 @@ export default {
       },
     },
     put: {
-      tags: ['Songs'],
+      tags: ['Albums'],
       parameters: [
         {
           in: 'path',
@@ -90,13 +90,13 @@ export default {
             type: 'integer',
             minimum: 1,
           },
-          description: 'The song Id',
+          description: 'The album Id',
         },
       ],
-      responses: songResponse,
+      responses: albumResponse,
     },
     delete: {
-      tags: ['Songs'],
+      tags: ['Albums'],
       parameters: [
         {
           in: 'path',
@@ -106,18 +106,18 @@ export default {
             type: 'integer',
             minimum: 1,
           },
-          description: 'The song Id',
+          description: 'The album Id',
         },
       ],
       responses: {
         200: {
-          description: 'Deleting song was a success!',
+          description: 'Deleting album was a success!',
           content: {
             'application/json': {
               schema: {
                 type: 'array',
                 items: {
-                  $ref: '#/components/schemas/Songs',
+                  $ref: '#/components/schemas/Albums',
                 },
               },
             },
