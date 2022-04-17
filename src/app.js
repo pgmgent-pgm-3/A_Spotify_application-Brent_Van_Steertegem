@@ -108,7 +108,7 @@ app.get('/api/song/:id', jwtAuth, getSong, home);
 // put song needs validation
 app.put('/api/song/:id', jwtAuth, putSong, home);
 app.delete('/api/song/:id', jwtAuth, deleteSong, home);
-// post song needs validation
+// post album needs validation
 app.post('/api/album', jwtAuth, postAlbum, home);
 app.get('/api/albums', jwtAuth, getAlbums, home);
 app.get('/api/album/:id', jwtAuth, getAlbum, home);
