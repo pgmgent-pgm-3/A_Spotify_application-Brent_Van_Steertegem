@@ -1,0 +1,6 @@
+<svg class="song-btn" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+    <g id="Group_1" data-name="Group 1" transform="translate(-0.321 0.379)">
+        <circle id="Ellipse_1" data-name="Ellipse 1" cx="18" cy="18" r="18" transform="translate(0.321 -0.379)" fill="#fff"/>
+        <path id="Path_1" data-name="Path 1" d="M10.327,24.916a1.171,1.171,0,0,1-.7-.237A1.688,1.688,0,0,1,9,23.324V10.592a1.686,1.686,0,0,1,.629-1.354,1.143,1.143,0,0,1,1.291-.07l10.615,6.366a1.75,1.75,0,0,1,0,2.849L10.92,24.749A1.155,1.155,0,0,1,10.327,24.916Z" transform="translate(4.173 0.784)" fill="#000000"/>
+    </g>
+</svg>

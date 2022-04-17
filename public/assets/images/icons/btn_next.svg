@@ -1,0 +1,6 @@
+ <svg class="song-btn" xmlns="http://www.w3.org/2000/svg" width="15.582" height="17" viewBox="0 0 15.582 17" fill="#535353">
+    <g id="Group_3" data-name="Group 3" transform="translate(0 -0.028)">
+        <path id="Path_2" data-name="Path 2" d="M10.416,23.237a1.415,1.415,0,0,1-.745-.212A1.429,1.429,0,0,1,9,21.813V10.424A1.416,1.416,0,0,1,11.049,9.15l11.329,5.695a1.429,1.429,0,0,1,0,2.548L11.049,23.088A1.416,1.416,0,0,1,10.416,23.237Z" transform="translate(-9 -8.13)"/>
+        <rect id="Rectangle_2" data-name="Rectangle 2" width="2" height="17" rx="1" transform="translate(13.582 0.028)"/>
+    </g>
+</svg>

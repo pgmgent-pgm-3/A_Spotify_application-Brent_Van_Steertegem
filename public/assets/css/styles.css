@@ -164,6 +164,7 @@ padding-bottom: 1rem;
 .song {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
   counter-increment: song;
 }
 
@@ -178,8 +179,6 @@ padding-bottom: 1rem;
 }
 
 .song__artist {
-  display: block;
-  margin-top: 0.3rem;
   font-size: 0.85rem;
 }
 
@@ -201,4 +200,39 @@ padding-bottom: 1rem;
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 0;
+}
+
+/* playing song controls */
+.playing_song {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.playing_song__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.playing_song__details, .playing_song__padding {
+  width: 21rem;
+}
+
+.playing_song__artist {
+  font-size: 0.95rem;
+}
+
+.playing_song__controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.playing_song__icon {
+  height: 1rem;
+}
+
+.playing_song__icon--play {
+  height: 2rem;
 }

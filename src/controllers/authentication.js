@@ -159,7 +159,6 @@ export const postLogin = async (req, res, next) => {
     // check if we found a user
     if (!user) {
       req.formErrors = [{ message: 'User does not exist.' }];
-      res.status(404).send('User does not exist.');
       return next();
     }
 

@@ -75,16 +75,26 @@
         <div class="main_content">
             <ol class="songs">
                 <li class="song">
-                    <img class="song__image" src="/assets/images/dream_widow.jpg">
-                    <div>
-                        <h1 class="song__title">Encino</h1>
-                        <span class="song__artist">Dream Widow</span>
-                    </div>
+                    <h1 class="song__title">Encino</h1>
+                    <span>-</span>
+                    <span class="song__artist">Dream Widow</span>
                 </li>
             </ol>
         </div>   
     </div>
 </main>
-<footer>
-    <h3>Current song</h3>
+<footer class="playing_song">
+    <div class="playing_song__details">
+        <h3 class="playing_song__title">Current Song</h3>
+        <h4 class="playing_song__artist">Artist</h4>
+    </div>
+    <section class="playing_song__controls">
+        <img class="playing_song__icon" src="/assets/images/icons/btn_shuffle.svg">
+        <img class="playing_song__icon" src="/assets/images/icons/btn_previous.svg">
+        <img class="playing_song__icon--play" src="/assets/images/icons/btn_play.svg">
+        <img class="playing_song__icon" src="/assets/images/icons/btn_next.svg">
+        <img class="playing_song__icon" src="/assets/images/icons/btn_loop.svg">
+    </section>
+    <div class="playing_song__padding"></div>
 </footer>
+<script type="module" src="/assets/scripts/app.js"></script>

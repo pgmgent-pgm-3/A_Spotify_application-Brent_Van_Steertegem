@@ -191,9 +191,9 @@ export const deleteSong = async (req, res, next) => {
       for (const playlist of playlists) {
         for (const playlistSong of playlist.songs) {
           if (playlistSong.id === song.id) {
-            playlist.songs.splice(playlist.songs.indexOf(playlistSong, 1));
+            playlist.songs.splice(playlist.songs.indexOf(playlistSong), 1);
             // eslint-disable-next-line no-await-in-loop
-            await playlistRepo.save(playlist);
+            await playlistRepo.update(playlist);
           }
         }
       }
@@ -208,9 +208,9 @@ export const deleteSong = async (req, res, next) => {
       for (const album of albums) {
         for (const albumSong of album.songs) {
           if (albumSong.id === song.id) {
-            album.songs.splice(album.songs.indexOf(albumSong, 1));
+            album.songs.splice(album.songs.indexOf(albumSong), 1);
             // eslint-disable-next-line no-await-in-loop
-            await albumRepo.save(album);
+            await albumRepo.update(album);
           }
         }
       }
