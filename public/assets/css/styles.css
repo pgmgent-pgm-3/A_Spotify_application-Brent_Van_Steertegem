@@ -229,6 +229,11 @@ padding-bottom: 1rem;
   align-items: center;
 }
 
+.playing_song__control {
+  background-color: inherit;
+  border: 0;
+}
+
 .playing_song__icon {
   height: 1rem;
 }
