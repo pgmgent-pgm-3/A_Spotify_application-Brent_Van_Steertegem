@@ -6,10 +6,10 @@
                     <i class="content__icon fa-solid fa-xmark"></i> 
                 </button>
             </form>
-            {{#manageType manage 'users'}}
-                <ul class="manage_users">
+            <ul class="manage">
+                {{#manageType manage 'users'}}
                     {{#each @root.data}}
-                        <li class="manage_user">
+                        <li class="manage__item">
                             <span>{{this.email}}</span>
                             <select>
                                 {{#each @root.roles}}
@@ -18,17 +18,36 @@
                             </select>
                         </li>
                     {{/each}}
-                </ul>
-            {{/manageType}}
-            {{#manageType manage 'artists'}}
-                <ul class="manage_artists">
+                {{/manageType}}
+                {{#manageType manage 'artists'}}
                     {{#each @root.artists}}
-                        <li class="manage_artist">
+                        <li class="manage__item">
                             <span>{{this.name}}</span>
                         </li>
                     {{/each}}
-                </ul>
-            {{/manageType}}
+                {{/manageType}} 
+                {{#manageType manage 'albums'}}
+                    {{#each @root.albums}}
+                        <li class="manage__item">
+                           <span>{{this.name}}</span>
+                        </li>
+                    {{/each}}
+                {{/manageType}}  
+                {{#manageType manage 'songs'}}
+                    {{#each @root.songs}}
+                        <li class="manage__item">
+                            <span>{{this.name}}</span>
+                        </li>
+                    {{/each}}
+                {{/manageType}}
+                {{#manageType manage 'playlists'}}
+                    {{#each @root.songs}}
+                        <li class="manage__item">
+                           <span>{{this.name}}</span>
+                        </li>
+                    {{/each}}
+                {{/manageType}}
+            </ul>
         </div>
     {{/if}}      
     <div class="sidebar">
@@ -56,6 +75,7 @@
                 <span class="content__span">Edit:</span>
                 <button class="content__btn" type="submit" formaction="/?manage=users">Users</button>
                 <button class="content__btn" type="submit" formaction="/?manage=artists">Artists</button>
+                <button class="content__btn" type="submit" formaction="/?manage=albums">Albums</button>
                 <button class="content__btn" type="submit" formaction="/?manage=songs">Songs</button>
                 <button class="content__btn" type="submit" formaction="/?manage=playlists">Playlists</button>
             </section>

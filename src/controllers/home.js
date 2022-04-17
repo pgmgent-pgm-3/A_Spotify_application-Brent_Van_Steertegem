@@ -62,7 +62,7 @@ export const home = async (req, res) => {
 
     // get artists for all songs in active playlist
     const songRepo = getConnection().getRepository('Song');
-    const songs = [];
+    const playlistSongs = [];
     // eslint-disable-next-line no-restricted-syntax
     for (let song of activePlaylist.songs) {
       // eslint-disable-next-line no-await-in-loop
@@ -70,12 +70,12 @@ export const home = async (req, res) => {
         where: { id: song.id },
         relations: ['artist_id'],
       });
-      songs.push(song);
+      playlistSongs.push(song);
     }
-    activePlaylist.songs = songs;
+    activePlaylist.songs = playlistSongs;
 
     // get all artists
-    const response = await fetch(
+    const artistResponse = await fetch(
       `http://localhost:${process.env.PORT}/api/artists`,
       {
         headers: {
@@ -83,7 +83,29 @@ export const home = async (req, res) => {
         },
       }
     );
-    const artists = await response.json();
+    const artists = await artistResponse.json();
+
+    // get all albums
+    const albumResponse = await fetch(
+      `http://localhost:${process.env.PORT}/api/albums`,
+      {
+        headers: {
+          cookie: `token=${req.cookies.token}`,
+        },
+      }
+    );
+    const albums = await albumResponse.json();
+
+    // get all songs
+    const songResponse = await fetch(
+      `http://localhost:${process.env.PORT}/api/songs`,
+      {
+        headers: {
+          cookie: `token=${req.cookies.token}`,
+        },
+      }
+    );
+    const songs = await songResponse.json();
 
     return res.render('home', {
       role,
@@ -95,6 +117,8 @@ export const home = async (req, res) => {
       playlists,
       activePlaylist,
       artists,
+      albums,
+      songs,
     });
   }
   // Gebruiker heeft geen geldige rol

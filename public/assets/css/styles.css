@@ -192,12 +192,12 @@ padding-bottom: 1rem;
   background-color: black;
 }
 
-/* manage users */
-.manage_users {
+/* manage */
+.manage {
   padding-bottom: 0.5rem;
 }
 
-.manage_user {
+.manage__item {
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 0;
