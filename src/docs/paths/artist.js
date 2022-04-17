@@ -47,8 +47,8 @@ export default {
     },
   },
   '/artist/{id}': {
-    summary: 'Delete an existing artist',
-    description: 'Get an existing artist...',
+    summary: 'Manipulate an existing artist',
+    description: 'Manipulate an existing artist...',
     put: {
       tags: ['Artists'],
       parameters: [

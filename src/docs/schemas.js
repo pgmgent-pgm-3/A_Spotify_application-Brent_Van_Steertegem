@@ -70,4 +70,37 @@ export default {
       name: 'Taylor Hawkins',
     },
   },
+  Song: {
+    properties: {
+      id: { type: 'number' },
+      name: { type: 'string' },
+      artist_id: {
+        $ref: '#/components/schemas/Artist',
+      },
+    },
+    example: {
+      id: 81,
+      name: 'Encino',
+      artist_id: {
+        id: 12,
+        name: 'PCI',
+      },
+    },
+  },
+  SongInput: {
+    properties: {
+      name: { type: 'string' },
+      artist_id: {
+        id: { type: 'number' },
+        name: { type: 'string' },
+      },
+    },
+    example: {
+      name: 'Encino',
+      artist_id: {
+        id: 12,
+        name: 'PCI',
+      },
+    },
+  },
 };

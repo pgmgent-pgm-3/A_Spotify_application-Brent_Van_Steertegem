@@ -28,8 +28,8 @@ export default {
     },
   },
   '/user/{id}': {
-    summary: 'Get an existing user',
-    description: 'Get an existing user...',
+    summary: 'Manipulate an existing user',
+    description: 'Manipulate an existing user...',
     get: {
       tags: ['Users'],
       parameters: [
