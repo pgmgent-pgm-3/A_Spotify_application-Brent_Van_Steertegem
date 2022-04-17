@@ -32,11 +32,11 @@ export default {
       description:
         'All the create, read, update and delete actions for the users.',
     },
-    // {
-    //   name: 'Artists',
-    //   description:
-    //     'All the create, read, update and delete actions for the roles.',
-    // },
+    {
+      name: 'Artists',
+      description:
+        'All the create, read, update and delete actions for the artists.',
+    },
   ],
   paths,
   components: {

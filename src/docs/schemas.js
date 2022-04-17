@@ -56,4 +56,18 @@ export default {
       label: { type: 'string' },
     },
   },
+  Artist: {
+    properties: {
+      id: { type: 'number' },
+      name: { type: 'string' },
+    },
+  },
+  ArtistInput: {
+    properties: {
+      name: { type: 'string' },
+    },
+    example: {
+      name: 'Taylor Hawkins',
+    },
+  },
 };
