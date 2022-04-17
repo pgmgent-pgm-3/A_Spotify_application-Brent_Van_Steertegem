@@ -45,7 +45,34 @@ export const home = async (req, res) => {
 
     // get all playlists
     const playlistRepo = getConnection().getRepository('Playlist');
-    const playlists = await playlistRepo.find();
+    const playlists = await playlistRepo.find({
+      relations: ['user_id', 'songs'],
+    });
+
+    // get active playlist
+    const activePlaylist = playlists[0];
+
+    // get user meta of active playlist owner
+    const userRepo = getConnection().getRepository('User');
+    const user = await userRepo.findOne({
+      where: { id: activePlaylist.user_id.id },
+      relations: ['user_meta_id'],
+    });
+    activePlaylist.user_id = user;
+
+    // get artists for all songs in active playlist
+    const songRepo = getConnection().getRepository('Song');
+    const songs = [];
+    // eslint-disable-next-line no-restricted-syntax
+    for (let song of activePlaylist.songs) {
+      // eslint-disable-next-line no-await-in-loop
+      song = await songRepo.findOne({
+        where: { id: song.id },
+        relations: ['artist_id'],
+      });
+      songs.push(song);
+    }
+    activePlaylist.songs = songs;
 
     // get all artists
     const response = await fetch(
@@ -66,6 +93,7 @@ export const home = async (req, res) => {
       inputs,
       formErrors,
       playlists,
+      activePlaylist,
       artists,
     });
   }

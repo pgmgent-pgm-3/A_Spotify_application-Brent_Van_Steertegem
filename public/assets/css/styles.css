@@ -166,11 +166,12 @@ padding-bottom: 1rem;
   align-items: center;
   gap: 0.5rem;
   counter-increment: song;
+  padding-bottom: 1rem;
 }
 
 .song:before {
   content: counter(song);
-  margin-right: 1rem;
+  width: 2rem;
 }
 
 .song__image {
@@ -234,8 +235,16 @@ padding-bottom: 1rem;
   border: 0;
 }
 
+.playing_song__control:focus-visible {
+  outline: 0;
+}
+
 .playing_song__icon {
   height: 1rem;
+}
+
+.playing_song__icon:focus-visible {
+  outline: 0;
 }
 
 .playing_song__icon--play {

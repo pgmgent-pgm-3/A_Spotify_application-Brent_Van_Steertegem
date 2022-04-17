@@ -62,47 +62,50 @@
             {{/isEditor}}
             <button class="content__btn btn_logout" type="submit">Logout</button>
         </form>
-        <div class="detail">
-            <div class="detail__top">
-                <img class="detail__image" alt="playlist image" src="/assets/images/dream_widow.jpg">
-                <div>
-                    <h1 class="detail__title">Heavy</h1>
-                    <span class="detail__owner">Taylor Hawkins</span>
-                    {{!-- <p class="detail__description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis sunt sequi impedit nulla non accusantium et, ratione reprehenderit hic eius aspernatur quae minima laborum beatae architecto laboriosam inventore sint. Minus?</p> --}}
+        {{#with activePlaylist}}
+            <div class="detail">
+                <div class="detail__top">
+                    <img class="detail__image" alt="playlist image" src="/assets/images/dream_widow.jpg">
+                    <div>
+                        <h1 class="detail__title">{{name}}</h1>
+                        <span class="detail__owner">{{user_id.user_meta_id.username}}</span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="main_content">
-            <ol class="songs">
-                <li class="song">
-                    <h1 class="song__title">Encino</h1>
-                    <span>-</span>
-                    <span class="song__artist">Dream Widow</span>
-                </li>
-            </ol>
-        </div>   
+            <div class="main_content">
+                <ol class="songs">
+                    {{#each songs}}
+                        <li class="song">
+                            <h1 class="song__title">{{name}}</h1>
+                            <span>-</span>
+                            <span class="song__artist">{{artist_id.name}}</span>
+                        </li>
+                    {{/each}}
+                </ol>
+            </div>   
+        {{/with}}
     </div>
 </main>
 <footer class="playing_song">
     <div class="playing_song__details">
-        <h3 class="playing_song__title">Current Song</h3>
-        <h4 class="playing_song__artist">Artist</h4>
+        <h3 class="playing_song__title">Psychosocial</h3>
+        <h4 class="playing_song__artist">Slipknot</h4>
     </div>
     <section class="playing_song__controls">
         <button class="playing_song__control">
-            <img class="playing_song__icon" src="/assets/images/icons/btn_shuffle.svg">
+            <img class="playing_song__icon" alt="shuffle icon" src="/assets/images/icons/btn_shuffle.svg">
         </button>
         <button class="playing_song__control">
-            <img class="playing_song__icon" src="/assets/images/icons/btn_previous.svg">
+            <img class="playing_song__icon" alt="previous song icon" src="/assets/images/icons/btn_previous.svg">
         </button>
         <button class="playing_song__control playing_song__control--play">
-            <img class="playing_song__icon--play" src="/assets/images/icons/btn_play.svg">
+            <img class="playing_song__icon playing_song__icon--play" alt="play button icon" src="/assets/images/icons/btn_play.svg">
         </button>
         <button class="playing_song__control">
-            <img class="playing_song__icon" src="/assets/images/icons/btn_next.svg">
+            <img class="playing_song__icon" alt="next song icon" src="/assets/images/icons/btn_next.svg">
         </button>
         <button class="playing_song__control">
-            <img class="playing_song__icon" src="/assets/images/icons/btn_loop.svg">
+            <img class="playing_song__icon" alt="loop icon" src="/assets/images/icons/btn_loop.svg">
         </button>
     </section>
     <div class="playing_song__padding"></div>
